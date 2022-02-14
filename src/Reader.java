@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Reader {
   private HashMap<String, Commands> commands;
-  private String filePath;
+  final String filePath;
   private theater theater;
 
   public Reader(String filePath, theater t) {
@@ -53,7 +53,7 @@ public class Reader {
   }
 
   public void writeHelper(String name){
-    ArrayList<String> x = new ArrayList<String>();
+    ArrayList<String> x = new ArrayList<>();
     for (Ticket t : reserve.ticketList) {
       String y = t.getTicketNum()+" "+ helper(t.getSeat());
       x.add(y);
@@ -75,7 +75,7 @@ public class Reader {
 
   public void writeReserve(String name, ArrayList<String> line) {
     try {
-      Files.write(Paths.get("/Users/kevinkang/Desktop/cs_projects/Walmart/output/"+name),
+      Files.write(Paths.get("/Users/kevinkang/Desktop/cs_projects/Walmart/TheaterSeating/output/"+name),
               line, StandardCharsets.UTF_8);
     } catch (IOException e) {
       e.printStackTrace();
